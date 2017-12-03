@@ -52,7 +52,7 @@
                             <CheckBox x:Name="xCheckBoxExtraRule"></CheckBox>
                             <TextBlock>크레센트 자매 추가 등장 룰</TextBlock>
                         </StackPanel>
-                        
+
                     </StackPanel>
                 </GroupBox>
             </StackPanel>

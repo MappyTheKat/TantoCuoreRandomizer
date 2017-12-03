@@ -15,31 +15,34 @@ using System.Windows.Shapes;
 
 namespace TantoCuoreRandomizer
 {
-    /// <summary>
-    /// MainWindow.xaml에 대한 상호 작용 논리
-    /// </summary>
-    public partial class MainWindow : Window
-    {
-        private List<Maid> OriginalMaids = new List<Maid>();
-        private List<Maid> ExpandingHouseMaids = new List<Maid>();
-        private List<Maid> RomanticVacationMaids = new List<Maid>();
-        private List<Maid> OktoberfestMaids = new List<Maid>();
-        private List<Maid> WinterRomanceMaids = new List<Maid>();
+	/// <summary>
+	/// MainWindow.xaml에 대한 상호 작용 논리
+	/// </summary>
+	public partial class MainWindow : Window
+	{
+		private List<Maid> OriginalMaids = new List<Maid>();
+		private List<Maid> ExpandingHouseMaids = new List<Maid>();
+		private List<Maid> RomanticVacationMaids = new List<Maid>();
+		private List<Maid> OktoberfestMaids = new List<Maid>();
+		private List<Maid> WinterRomanceMaids = new List<Maid>();
 		private List<Maid> ExtraMaids = new List<Maid>(); // 크레센트 자매 하우스룰을 위한 추가 덱세팅
 
-        public MainWindow()
-        {
-            InitializeComponent();
-        }
+		private List<Maid> Output = new List<Maid>();
 
-        private void SetMaids()
-        {
-            OriginalMaids.Clear();
-            ExpandingHouseMaids.Clear();
-            RomanticVacationMaids.Clear();
-            OktoberfestMaids.Clear();
-            WinterRomanceMaids.Clear();
+		public MainWindow()
+		{
+			InitializeComponent();
+		}
+
+		private void SetMaids()
+		{
+			OriginalMaids.Clear();
+			ExpandingHouseMaids.Clear();
+			RomanticVacationMaids.Clear();
+			OktoberfestMaids.Clear();
+			WinterRomanceMaids.Clear();
 			ExtraMaids.Clear();
+			////////Output.Clear();
 
 			// 본판(오리지널)
 			OriginalMaids.Add(new Maid(Expansion.Original, "루쥬 크레센트", 2));
@@ -104,13 +107,13 @@ namespace TantoCuoreRandomizer
 			OktoberfestMaids.Add(new Maid(Expansion.Oktoberfest, "파울라 라우덴버그", 2));
 			OktoberfestMaids.Add(new Maid(Expansion.Oktoberfest, "카오리 하마사키", 3));
 			// 우테는 좀 애매한데 알콜에 영향은 받는데 맥주를 얻게할 방법은 없음(...)
-			OktoberfestMaids.Add(new Maid(Expansion.Oktoberfest, "우테 크롬바흐", 3)); 
+			OktoberfestMaids.Add(new Maid(Expansion.Oktoberfest, "우테 크롬바흐", 3));
 			OktoberfestMaids.Add(new Maid(Expansion.Oktoberfest, "에일린 해머슈미트", 3));
 			OktoberfestMaids.Add(new Maid(Expansion.Oktoberfest, "레나타 아벤드로스", 3));
 			OktoberfestMaids.Add(new Maid(Expansion.Oktoberfest, "안나 하르트만", 3));
 			OktoberfestMaids.Add(new Maid(Expansion.Oktoberfest, "키리카 폰 하이드만", 4));
 			// 줄리아도 맥주 덱을 볼 기능은 있는데 맥주를 얻는 방법은 없어서.. 그냥 2카드 1구매라고 생각하면 좀 구리긴 함
-			OktoberfestMaids.Add(new Maid(Expansion.Oktoberfest, "줄리아 쿤스테르", 4)); 
+			OktoberfestMaids.Add(new Maid(Expansion.Oktoberfest, "줄리아 쿤스테르", 4));
 			OktoberfestMaids.Add(new Maid(Expansion.Oktoberfest, "사라 레온하르트", 4));
 			OktoberfestMaids.Add(new Maid(Expansion.Oktoberfest, "지나 케르스텐", 4, ExtraSetting.Beer));
 			OktoberfestMaids.Add(new Maid(Expansion.Oktoberfest, "나디야 케르스텐", 5, ExtraSetting.Beer));
@@ -123,46 +126,45 @@ namespace TantoCuoreRandomizer
 		}
 
 		public void OnRandomizeButtonPressed(object sender, EventArgs e)
-        {
+		{
 			SetMaids();
 
-            bool IsOriginalInclude = true;
-			bool IsExpandingHouseInclude = true;
-			bool IsRomanticVacationInclude = true;
-			bool IsOktoberfestInclude = true;
-			bool IsWinterRomanceInclude = true;
-			bool IsExtraDeckRuleInclude = true;
+			bool IsOriginalInclude = xCheckBoxOriginal.IsChecked.Value; // 아 미친 왜 CheckBox IsChecked가 bool?이야 도랐나...
+			bool IsExpandingHouseInclude = xCheckBoxOriginal.IsChecked.Value;
+			bool IsRomanticVacationInclude = xCheckBoxOriginal.IsChecked.Value;
+			bool IsOktoberfestInclude = xCheckBoxOktoberfest.IsChecked.Value;
+			bool IsWinterRomanceInclude = xCheckBoxWinterRomance.IsChecked.Value;
+			bool IsExtraDeckRuleInclude = xCheckBoxExtraRule.IsChecked.Value;
 
 			List<Maid> WholePool = new List<Maid>();
 
-			if(IsOriginalInclude)
+			if (IsOriginalInclude)
 			{
 				WholePool.AddRange(OriginalMaids);
 			}
 
-			if(IsExpandingHouseInclude)
+			if (IsExpandingHouseInclude)
 			{
 				WholePool.AddRange(ExpandingHouseMaids);
 			}
 
-			if(IsRomanticVacationInclude)
+			if (IsRomanticVacationInclude)
 			{
 				WholePool.AddRange(RomanticVacationMaids);
 			}
 
-			if(IsOktoberfestInclude)
+			if (IsOktoberfestInclude)
 			{
 				WholePool.AddRange(OktoberfestMaids);
 			}
 
-			if(IsWinterRomanceInclude)
+			if (IsWinterRomanceInclude)
 			{
 				WholePool.AddRange(WinterRomanceMaids);
 			}
 
 			Random random = new Random();
-			List<Maid> Output = new List<Maid>();
-			for(int count = 0; count < 10; count++)
+			for (int count = 0; count < 10; count++)
 			{
 				int randomvalue = random.Next() % WholePool.Count;
 				Maid selectedMaid = WholePool.ElementAt(randomvalue);
@@ -170,9 +172,9 @@ namespace TantoCuoreRandomizer
 				WholePool.RemoveAt(randomvalue);
 			}
 
-			if(IsExtraDeckRuleInclude)
+			if (IsExtraDeckRuleInclude)
 			{
-				if(Output.Any(maid => ExtraMaids.Any(extramid => extramid.Name == maid.Name)))
+				if (Output.Any(maid => ExtraMaids.Any(extramid => extramid.Name == maid.Name)))
 				{
 					//크레센트 자매 추가 덱에서 크레센트 자매를 뽑는다.
 					ExtraMaids.RemoveAll(extramid => WholePool.Any(maid => extramid.Name == maid.Name));
@@ -181,10 +183,10 @@ namespace TantoCuoreRandomizer
 
 					Random random2 = new Random();
 					Random random3 = new Random();
-					for ( int extraTries = 0; extraTries < extraCount; extraTries++)
+					for (int extraTries = 0; extraTries < extraCount; extraTries++)
 					{
 						int randomValue2 = random2.Next() % 3;
-						if(randomValue2 > extraTries)
+						if (randomValue2 > extraTries)
 						{
 							int randomValue3 = random3.Next() % ExtraMaids.Count;
 							Maid selectedExtramaid = ExtraMaids.ElementAt(randomValue3);
@@ -197,14 +199,14 @@ namespace TantoCuoreRandomizer
 		}
 	}
 
-    public enum Expansion
-    {
-        Original,
-        ExpandingHouse,
-        RomanticVacation,
-        Oktoberfest,
-        WinterRomance
-    }
+	public enum Expansion
+	{
+		Original,
+		ExpandingHouse,
+		RomanticVacation,
+		Oktoberfest,
+		WinterRomance
+	}
 
 	public enum ExtraSetting
 	{
@@ -214,18 +216,18 @@ namespace TantoCuoreRandomizer
 		Beer
 	}
 
-    public struct Maid
-    {
-        public Expansion Expansion;
-        public string Name;
-        public int EmployCost;
+	public struct Maid
+	{
+		public Expansion Expansion;
+		public string Name;
+		public int EmployCost;
 		public ExtraSetting ExtraSetting;
 
-        public Maid(Expansion expansion, string name, int employcost)
-			:this (expansion, name, employcost, ExtraSetting.None)
-        {
+		public Maid(Expansion expansion, string name, int employcost)
+			: this(expansion, name, employcost, ExtraSetting.None)
+		{
 
-        }
+		}
 
 		public Maid(Expansion expansion, string name, int employcost, ExtraSetting extrasetting)
 		{
@@ -234,5 +236,5 @@ namespace TantoCuoreRandomizer
 			EmployCost = employcost;
 			ExtraSetting = extrasetting;
 		}
-    }
+	}
 }
