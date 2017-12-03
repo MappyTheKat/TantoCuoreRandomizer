@@ -131,7 +131,7 @@ namespace TantoCuoreRandomizer
 			bool IsRomanticVacationInclude = true;
 			bool IsOktoberfestInclude = true;
 			bool IsWinterRomanceInclude = true;
-			bool IsExtraDeckRuleInclude;
+			bool IsExtraDeckRuleInclude = true;
 
 			List<Maid> WholePool = new List<Maid>();
 
@@ -160,18 +160,40 @@ namespace TantoCuoreRandomizer
 				WholePool.AddRange(WinterRomanceMaids);
 			}
 
+			Random random = new Random();
 			List<Maid> Output = new List<Maid>();
 			for(int count = 0; count < 10; count++)
 			{
-
+				int randomvalue = random.Next() % WholePool.Count;
+				Maid selectedMaid = WholePool.ElementAt(randomvalue);
+				Output.Add(selectedMaid);
+				WholePool.RemoveAt(randomvalue);
 			}
 
+			if(IsExtraDeckRuleInclude)
+			{
+				if(Output.Any(maid => ExtraMaids.Any(extramid => extramid.Name == maid.Name)))
+				{
+					//크레센트 자매 추가 덱에서 크레센트 자매를 뽑는다.
+					ExtraMaids.RemoveAll(extramid => WholePool.Any(maid => extramid.Name == maid.Name));
 
+					int extraCount = ExtraMaids.Count;
 
-
-			
-
-
+					Random random2 = new Random();
+					Random random3 = new Random();
+					for ( int extraTries = 0; extraTries < extraCount; extraTries++)
+					{
+						int randomValue2 = random2.Next() % 3;
+						if(randomValue2 > extraTries)
+						{
+							int randomValue3 = random3.Next() % ExtraMaids.Count;
+							Maid selectedExtramaid = ExtraMaids.ElementAt(randomValue3);
+							Output.Add(selectedExtramaid);
+							ExtraMaids.RemoveAt(randomValue3);
+						}
+					}
+				}
+			}
 		}
 	}
 
@@ -194,10 +216,10 @@ namespace TantoCuoreRandomizer
 
     public struct Maid
     {
-        Expansion Expansion;
-        string Name;
-        int EmployCost;
-		ExtraSetting ExtraSetting;
+        public Expansion Expansion;
+        public string Name;
+        public int EmployCost;
+		public ExtraSetting ExtraSetting;
 
         public Maid(Expansion expansion, string name, int employcost)
 			:this (expansion, name, employcost, ExtraSetting.None)

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TantoCuoreRandomizer"
         mc:Ignorable="d"
-        Title="Tanto Cuore Randomizer by Mappy The Kat" Height="600" Width="800">
+        Title="Tanto Cuore Randomizer by Mappy The Kat" Height="600" Width="800" ResizeMode="NoResize">
     <Grid x:Name="xGridMain">
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
@@ -20,8 +20,54 @@
             <RowDefinition/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <Grid x:Name="xGridOptionSelector" Grid.Row="0" Grid.ColumnSpan="5">
-            
+        <Grid x:Name="xGridOptionSelector" Grid.Row="0" Grid.ColumnSpan="4">
+            <StackPanel Orientation="Vertical">
+                <GroupBox BorderBrush="#FF12425F" Header="덱 선택" FontSize="15">
+                    <StackPanel Orientation="Horizontal">
+                        <StackPanel Orientation="Horizontal" Margin="5">
+                            <CheckBox x:Name="xCheckBoxOriginal"></CheckBox>
+                            <TextBlock>오리지널</TextBlock>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="5">
+                            <CheckBox x:Name="xCheckBoxExpandingHouse"></CheckBox>
+                            <TextBlock>확장 공사!</TextBlock>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="5">
+                            <CheckBox x:Name="xCheckBoxRomanticVacation"></CheckBox>
+                            <TextBlock>낭만적인 여름휴가</TextBlock>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="5">
+                            <CheckBox x:Name="xCheckBoxOktoberfest"></CheckBox>
+                            <TextBlock>옥토버페스트</TextBlock>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="5">
+                            <CheckBox x:Name="xCheckBoxWinterRomance"></CheckBox>
+                            <TextBlock>겨울 로맨스</TextBlock>
+                        </StackPanel>
+                    </StackPanel>
+                </GroupBox>
+                <GroupBox Header="추가 하우스 룰" BorderBrush="#FF12425F" FontSize="15">
+                    <StackPanel Orientation="Horizontal">
+                        <StackPanel Orientation="Horizontal" Margin="5">
+                            <CheckBox x:Name="xCheckBoxExtraRule"></CheckBox>
+                            <TextBlock>크레센트 자매 추가 등장 룰</TextBlock>
+                        </StackPanel>
+                        
+                    </StackPanel>
+                </GroupBox>
+            </StackPanel>
+        </Grid>
+        <Grid x:Name="xGridRandomGenerateButton" Grid.Column="5">
+            <Button x:Name="xButtonRandomGenerate" FontSize="15" Margin="10">
+                랜덤 마을만들기!
+            </Button>
+        </Grid>
+        <Grid x:Name="xGridRandomResultGrid" Grid.Row="1" Grid.ColumnSpan="5" Grid.RowSpan="3">
+            <ListView>
+                <!--<ListView.ItemContainerStyle>
+                    <TextBlock></TextBlock>
+                </ListView.ItemContainerStyle>-->
+            </ListView>
         </Grid>
     </Grid>
 </Window>
