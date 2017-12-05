@@ -25,24 +25,24 @@
                 <GroupBox BorderBrush="#FF12425F" Header="덱 선택" FontSize="15">
                     <StackPanel Orientation="Horizontal">
                         <StackPanel Orientation="Horizontal" Margin="5">
-                            <CheckBox x:Name="xCheckBoxOriginal"></CheckBox>
+                            <CheckBox x:Name="xCheckBoxOriginal" IsChecked="True"></CheckBox>
                             <TextBlock>오리지널</TextBlock>
                         </StackPanel>
                         <StackPanel Orientation="Horizontal" Margin="5">
-                            <CheckBox x:Name="xCheckBoxExpandingHouse"></CheckBox>
-                            <TextBlock>확장 공사!</TextBlock>
+                            <CheckBox x:Name="xCheckBoxExpandingHouse" IsChecked="True"></CheckBox>
+                            <TextBlock>확장공사</TextBlock>
                         </StackPanel>
                         <StackPanel Orientation="Horizontal" Margin="5">
-                            <CheckBox x:Name="xCheckBoxRomanticVacation"></CheckBox>
+                            <CheckBox x:Name="xCheckBoxRomanticVacation" IsChecked="True"></CheckBox>
                             <TextBlock>낭만적인 여름휴가</TextBlock>
                         </StackPanel>
                         <StackPanel Orientation="Horizontal" Margin="5">
-                            <CheckBox x:Name="xCheckBoxOktoberfest"></CheckBox>
+                            <CheckBox x:Name="xCheckBoxOktoberfest" IsChecked="True"></CheckBox>
                             <TextBlock>옥토버페스트</TextBlock>
                         </StackPanel>
                         <StackPanel Orientation="Horizontal" Margin="5">
-                            <CheckBox x:Name="xCheckBoxWinterRomance"></CheckBox>
-                            <TextBlock>겨울 로맨스</TextBlock>
+                            <CheckBox x:Name="xCheckBoxWinterRomance" IsChecked="True"></CheckBox>
+                            <TextBlock>겨울 로맨스(미출시)</TextBlock>
                         </StackPanel>
                     </StackPanel>
                 </GroupBox>
@@ -58,16 +58,23 @@
             </StackPanel>
         </Grid>
         <Grid x:Name="xGridRandomGenerateButton" Grid.Column="5">
-            <Button x:Name="xButtonRandomGenerate" FontSize="15" Margin="10">
+            <Button x:Name="xButtonRandomGenerate" FontSize="15" Margin="10" Click="OnRandomizeButtonPressed">
                 랜덤 마을만들기!
             </Button>
         </Grid>
         <Grid x:Name="xGridRandomResultGrid" Grid.Row="1" Grid.ColumnSpan="5" Grid.RowSpan="3">
-            <ListView>
-                <!--<ListView.ItemContainerStyle>
-                    <TextBlock></TextBlock>
-                </ListView.ItemContainerStyle>-->
-            </ListView>
+            <GroupBox BorderBrush="#FF12425F" Header="결과" FontSize="15">
+                <ListView x:Name="xListViewResult">
+                    <ListView.View>
+                        <GridView x:Name="xGridViewResult">
+                            <GridViewColumn Header="팩" DisplayMemberBinding="{Binding ExpansionName}" Width="150"/>
+                            <GridViewColumn Header="이름" DisplayMemberBinding="{Binding Name}" Width="250"/>
+                            <GridViewColumn Header="비용" DisplayMemberBinding="{Binding EmployCost}" Width="40"/>
+                            <GridViewColumn Header="추가 세팅" DisplayMemberBinding="{Binding ExtraSettingString}" Width="150"/>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+            </GroupBox>
         </Grid>
     </Grid>
 </Window>
