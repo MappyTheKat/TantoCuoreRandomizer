@@ -131,8 +131,8 @@ namespace TantoCuoreRandomizer
             SetMaids();
 
             bool IsOriginalInclude = xCheckBoxOriginal.IsChecked.Value; // 아 미친 왜 CheckBox IsChecked가 bool?이야 도랐나...
-            bool IsExpandingHouseInclude = xCheckBoxOriginal.IsChecked.Value;
-            bool IsRomanticVacationInclude = xCheckBoxOriginal.IsChecked.Value;
+            bool IsExpandingHouseInclude = xCheckBoxExpandingHouse.IsChecked.Value;
+            bool IsRomanticVacationInclude = xCheckBoxRomanticVacation.IsChecked.Value;
             bool IsOktoberfestInclude = xCheckBoxOktoberfest.IsChecked.Value;
             bool IsWinterRomanceInclude = xCheckBoxWinterRomance.IsChecked.Value;
             bool IsExtraDeckRuleInclude = xCheckBoxExtraRule.IsChecked.Value;
