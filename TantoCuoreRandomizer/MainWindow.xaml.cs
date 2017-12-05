@@ -179,7 +179,7 @@ namespace TantoCuoreRandomizer
                 if (Output.Any(maid => ExtraMaids.Any(extramid => extramid.Name == maid.Name)))
                 {
                     //이미 뽑혀있는 크레센트 자매들을 추가 덱에서 제외한다.
-                    ExtraMaids.RemoveAll(extramid => WholePool.Any(maid => extramid.Name == maid.Name));
+                    ExtraMaids.RemoveAll(extramid => Output.Any(maid => extramid.Name == maid.Name));
 
                     int extraCount = ExtraMaids.Count;
 
