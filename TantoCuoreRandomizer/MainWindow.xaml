@@ -50,7 +50,7 @@
                     <StackPanel Orientation="Horizontal">
                         <StackPanel Orientation="Horizontal" Margin="5">
                             <CheckBox x:Name="xCheckBoxExtraRule" IsChecked="{Binding IsExtraDeckRuleInclude}"></CheckBox>
-                            <TextBlock ToolTip="크레센트 자매를 더 많이 등장시키기 위한 추가 하우스 룰입니다.\n 만일 크레센트 자매가 하나라도 마을에 포함되어있다면 주사위를 굴려 나머지 크레센트 자매를 마을에 포함시킵니다.\n 첫번째 추가 크레센트 자매가 등장할 확률은 ">
+                            <TextBlock ToolTip="크레센트 자매를 더 많이 등장시키기 위한 추가 하우스 룰입니다.&#x0a;만일 크레센트 자매가 하나라도 마을에 포함되어있다면 주사위를&#x0a;굴려 나머지 크레센트 자매를 마을에 추가로 포함시킵니다.&#x0a;첫번째 추가 크레센트 자매가 등장할 확률은 2/3,&#x0a;두번째 추가 크레센트 자매가 등장할 확률은 1/3입니다.">
                                 크레센트 자매 추가 등장 룰
                             </TextBlock>
                         </StackPanel>
@@ -65,7 +65,7 @@
         </Grid>
         <Grid x:Name="xGridRandomResultGrid" Grid.Row="1" Grid.ColumnSpan="5" Grid.RowSpan="3">
             <GroupBox BorderBrush="#FF12425F" Header="결과" FontSize="15">
-                <ListView x:Name="xListViewResult">
+                <ListView x:Name="xListViewResult" ItemsSource="{Binding OutputMaids}">
                     <ListView.View>
                         <GridView x:Name="xGridViewResult">
                             <GridViewColumn Header="팩" DisplayMemberBinding="{Binding ExpansionName}" Width="150"/>
