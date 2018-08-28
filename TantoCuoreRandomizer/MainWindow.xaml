@@ -42,7 +42,7 @@
                         </StackPanel>
                         <StackPanel Orientation="Horizontal" Margin="5">
                             <CheckBox x:Name="xCheckBoxWinterRomance" IsChecked="{Binding IsWinterRomanceInclude}"></CheckBox>
-                            <TextBlock>겨울 로맨스(미출시)</TextBlock>
+                            <TextBlock>겨울 로맨스</TextBlock>
                         </StackPanel>
                     </StackPanel>
                 </GroupBox>

@@ -46,12 +46,15 @@ public enum Expansion
 }
 
 // 하우스 룰용 추가 세팅 확인용.
+// 반드시 넣어야하는 경우만 체크하게 되어있음.
 public enum ExtraSetting
 {
     None,
     Building,
     Reminiscence,
-    Beer
+    Beer,
+    Couple,
+    Drama
 }
 
 public struct Maid

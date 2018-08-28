@@ -99,7 +99,22 @@ namespace TantoCuoreRandomizer
             OktoberfestMaids.Add(new Maid(Expansion.Oktoberfest, "헤르미나 바움", 6));
             OktoberfestMaids.Add(new Maid(Expansion.Oktoberfest, "엘자 라인마이어", 7));
 
-            //TODO : Winter Romance 나오면 넣기
+            WinterRomanceMaids.Add(new Maid(Expansion.WinterRomance, "더모트 게린", 8, ExtraSetting.Drama));
+            WinterRomanceMaids.Add(new Maid(Expansion.WinterRomance, "미카엘라 피델리티", 7));
+            WinterRomanceMaids.Add(new Maid(Expansion.WinterRomance, "메노우 타테히라", 6));
+            WinterRomanceMaids.Add(new Maid(Expansion.WinterRomance, "서니 크로스카렌트", 6));
+            WinterRomanceMaids.Add(new Maid(Expansion.WinterRomance, "시시도 쿠로가네", 5));
+            WinterRomanceMaids.Add(new Maid(Expansion.WinterRomance, "단테 가니에", 5));
+            WinterRomanceMaids.Add(new Maid(Expansion.WinterRomance, "킴벌리 에반", 4));
+            WinterRomanceMaids.Add(new Maid(Expansion.WinterRomance, "브누와 입센", 4));
+            WinterRomanceMaids.Add(new Maid(Expansion.WinterRomance, "셜리 폴록", 4));
+            WinterRomanceMaids.Add(new Maid(Expansion.WinterRomance, "허비 포츠", 3, ExtraSetting.Couple));
+            WinterRomanceMaids.Add(new Maid(Expansion.WinterRomance, "엘리자베스 코란", 3, ExtraSetting.Couple));
+            WinterRomanceMaids.Add(new Maid(Expansion.WinterRomance, "지미 해리스턴", 3));
+            WinterRomanceMaids.Add(new Maid(Expansion.WinterRomance, "니콜라스 가리발디", 3));
+            WinterRomanceMaids.Add(new Maid(Expansion.WinterRomance, "아네모네 세이야", 3));
+            WinterRomanceMaids.Add(new Maid(Expansion.WinterRomance, "샨티 벨", 1));
+            WinterRomanceMaids.Add(new Maid(Expansion.WinterRomance, "키나 솔스티아", 2));
         }
 
         private bool isOriginalInclude = true;
